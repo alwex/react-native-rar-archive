@@ -17,10 +17,6 @@ const RarArchive = NativeModules.RarArchive
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return RarArchive.multiply(a, b);
-}
-
 export function unrar(from: string, to: string): Promise<string> {
   return RarArchive.unrar(from, to);
 }
