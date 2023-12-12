@@ -1,20 +1,24 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import { DocumentDirectoryPath, mkdir } from 'react-native-fs';
 import { unrar } from 'react-native-rar-archive';
-import { MainBundlePath, DocumentDirectoryPath } from 'react-native-fs';
 
-const sourcePath = `${DocumentDirectoryPath}/archive.cbr`;
-const targetPath = `${MainBundlePath}/unrar`;
-
-console.log(sourcePath);
-console.log(targetPath);
+const sourcePath = `${DocumentDirectoryPath}/archive.rar`;
+const targetPath = `${DocumentDirectoryPath}/unrar`;
 
 export default function App() {
   const [result, setResult] = React.useState<string | undefined>();
 
   React.useEffect(() => {
-    unrar(sourcePath, targetPath).then(setResult);
+    const handleUnrar = async () => {
+      await mkdir(targetPath);
+
+      const res = await unrar(sourcePath, targetPath);
+
+      setResult(res);
+    };
+    handleUnrar();
   }, []);
 
   return (
