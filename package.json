@@ -26,6 +26,7 @@
     "!**/.*"
   ],
   "scripts": {
+    "v": "yarn version --no-git-tag-version",
     "example": "yarn workspace react-native-rar-archive-example",
     "test": "jest",
     "typecheck": "tsc --noEmit",
