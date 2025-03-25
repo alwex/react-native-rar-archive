@@ -97,7 +97,7 @@ npm run pack
 Then in your project:
 
 ```sh
-"react-native-rar-archive": "../react-native-rar-archive/react-native-rar-archive-1.2.0.tgz",
+"react-native-rar-archive": "../react-native-rar-archive/package.tgz",
 ```
 
 ### Publishing to npm

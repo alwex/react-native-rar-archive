@@ -3,16 +3,25 @@
 @implementation RarArchive
 RCT_EXPORT_MODULE()
 
-// Example method
-// See // https://reactnative.dev/docs/native-modules-ios
-RCT_EXPORT_METHOD(multiply:(double)a
-                  b:(double)b
+RCT_EXPORT_METHOD(unrar:(NSString *)from
+                  to:(NSString *)toPath
                   resolve:(RCTPromiseResolveBlock)resolve
                   reject:(RCTPromiseRejectBlock)reject)
 {
-    NSNumber *result = @(a * b);
+    NSError *archiveError = nil;
+    NSError *error = nil;
 
-    resolve(result);
+    URKArchive *archive = [[URKArchive alloc] initWithPath:from error:&archiveError];
+
+
+    BOOL extractFilesSuccessful = [archive extractFilesTo:toPath
+                                  overwrite:NO
+                                  error:&error];
+    if (extractFilesSuccessful) {
+      resolve(toPath);
+    } else {
+      reject(@"unrar_error", @"Failed to unrar", error);
+    }
 }
 
 
