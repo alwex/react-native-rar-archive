@@ -1,6 +1,6 @@
 {
   "name": "react-native-rar-archive",
-  "version": "0.1.0",
+  "version": "1.2.0",
   "description": "unrar",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",

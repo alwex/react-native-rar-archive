@@ -17,6 +17,9 @@ const RarArchive = NativeModules.RarArchive
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return RarArchive.multiply(a, b);
+const normalizeFilePath = (path: string) =>
+  path.startsWith('file://') ? path.slice(7) : path;
+
+export function unrar(from: string, to: string): Promise<string> {
+  return RarArchive.unrar(normalizeFilePath(from), normalizeFilePath(to));
 }

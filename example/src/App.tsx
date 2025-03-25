@@ -1,17 +1,43 @@
-import { multiply } from 'react-native-rar-archive';
-import { Text, View, StyleSheet } from 'react-native';
-import { useState, useEffect } from 'react';
+import { keepLocalCopy, pick } from '@react-native-documents/picker';
+import { Button, StyleSheet, View } from 'react-native';
+import RNFS from 'react-native-fs';
+import { unrar } from 'react-native-rar-archive';
+
+const target = RNFS.DocumentDirectoryPath;
 
 export default function App() {
-  const [result, setResult] = useState<number | undefined>();
-
-  useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
-
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Button
+        title="open file"
+        onPress={async () => {
+          try {
+            const [{ name, uri }] = await pick({});
+            console.log({ name, uri });
+
+            const [copyResult] = await keepLocalCopy({
+              files: [
+                {
+                  uri,
+                  fileName: name ?? 'fallback-name',
+                },
+              ],
+              destination: 'documentDirectory',
+            });
+
+            if (copyResult.status === 'success') {
+              // do something with the local copy:
+              console.log(copyResult.localUri);
+              console.log({ target });
+              const unrarResult = await unrar(copyResult.localUri, target);
+
+              console.log({ unrarResult });
+            }
+          } catch (err) {
+            console.error(err);
+          }
+        }}
+      />
     </View>
   );
 }
