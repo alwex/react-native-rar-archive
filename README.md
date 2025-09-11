@@ -29,7 +29,7 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 ## Native libraries used
 
 - UnrarKit (ios) https://github.com/abbeycode/UnrarKit
-- junrar (android) https://github.com/junrar/junrar
+- 7zip (android) https://github.com/omicronapps/7-Zip-JBinding-4Android
 
 ## License
 
