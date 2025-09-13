@@ -6,6 +6,7 @@ buildscript {
   repositories {
     google()
     mavenCentral()
+    mavenLocal()
   }
 
   dependencies {
@@ -68,6 +69,7 @@ android {
 }
 
 repositories {
+  mavenLocal()
   mavenCentral()
   google()
   maven { url 'https://jitpack.io' }
@@ -78,6 +80,9 @@ def kotlin_version = getExtOrDefault("kotlinVersion")
 dependencies {
   implementation "com.facebook.react:react-android"
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-  implementation 'com.github.omicronapps:7-Zip-JBinding-4Android:Release-16.02-2.02'
+  // implementation 'com.github.omicronapps:7-Zip-JBinding-4Android:Release-16.02-2.02'
+  // implementation 'net.sf.sevenzipjbinding:sevenzipjbinding:16.02-2.02'
+  implementation "com.madmustachecompany:sevenzipjbinding-android:16.02-2.02-2025.07.04"
+
 }
 

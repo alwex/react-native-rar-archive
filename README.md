@@ -29,7 +29,11 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 ## Native libraries used
 
 - UnrarKit (ios) https://github.com/abbeycode/UnrarKit
+<<<<<<< HEAD
 - 7-Zip-JBinding-4Android (android) https://github.com/omicronapps/7-Zip-JBinding-4Android
+=======
+- 7zip (android) https://github.com/omicronapps/7-Zip-JBinding-4Android
+>>>>>>> origin/release-1.4.0
 
 ## License
 
