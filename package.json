@@ -1,6 +1,6 @@
 {
   "name": "react-native-rar-archive",
-  "version": "1.4.12",
+  "version": "1.4.13",
   "description": "unrar for react native",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
@@ -42,9 +42,9 @@
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
-    "publish7zip": "cd ../7zip && ./gradlew publishToMavenLocal",
+    "publish7zip": "cd ./7zip && ./gradlew publishToMavenLocal",
     "prepare": "bob build",
-    "build": "yarn publish7zip && yarn prepare",
+    "build": "yarn publish7zip && yarn prepare && npm pack",
     "release": "release-it"
   },
   "keywords": [

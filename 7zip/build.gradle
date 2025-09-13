@@ -1,0 +1,22 @@
+plugins {
+    id 'maven-publish'
+}
+
+group = "com.madmustachecompany"      // your own groupId
+version = "16.02-2.02-2025.07.04"   // your version string
+
+publishing {
+    publications {
+        aar(MavenPublication) {
+            artifactId = "sevenzipjbinding-android"   // the name you'll use in dependencies
+
+            // point to your .aar file
+            artifact("$rootDir/libs/sevenzipjbinding_16.02-2.02_2025_0704_1436.aar") {
+                extension = "aar"
+            }
+        }
+    }
+    repositories {
+        mavenLocal()
+    }
+}
